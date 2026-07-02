@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌤️ Weather Engine</h1>
+      <p>Deployed via secure GitOps pipeline</p>
+    </header>
+
+    <main>
+      <div class="search-box">
+        <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+        <button id="search-btn">Search</button>
+      </div>
+
+      <!-- Weather display card (hidden by default) -->
+      <div class="weather-card" id="weather-card">
+        <h2 id="weather-city">London</h2>
+        <div class="temp-display">
+          <span id="weather-temp">22.5</span>°C
+        </div>
+        <p class="desc-display" id="weather-desc">mostly sunny</p>
+        
+        <div class="details-row">
+          <div class="detail-item">
+            <span class="label">Humidity</span>
+            <span class="value" id="weather-humidity">60%</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Source</span>
+            <span class="value badge" id="weather-source">Cache</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error message container -->
+      <div class="error-card" id="error-card">
+        <p id="error-msg">City not found. Please try again.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

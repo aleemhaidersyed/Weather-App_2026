@@ -1,0 +1,156 @@
+/* Core Page Layout */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a; /* Deep slate dark background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: rgba(30, 41, 59, 0.7); /* Glistening grey card */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
+  font-weight: 800;
+}
+
+header p {
+  color: #94a3b8; /* Muted grey sub-heading */
+  font-size: 0.85rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Horizontal Search Flexbox Layout */
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#city-input {
+  flex-grow: 1;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+#city-input:focus {
+  border-color: #38bdf8; /* Cyan outline glow on focus */
+}
+
+#search-btn {
+  background: linear-gradient(135deg, #0284c7, #0369a1); /* Smooth cyan gradient */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+#search-btn:hover {
+  opacity: 0.9;
+}
+
+/* Weather display card styling */
+.weather-card {
+  display: none; /* Hidden by default; JavaScript turns this to 'block' */
+  animation: slideUpFade 0.4s ease;
+  margin-top: 1.5rem;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#weather-city {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.temp-display {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #38bdf8;
+  margin: 1rem 0;
+}
+
+.desc-display {
+  color: #94a3b8;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1e293b;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #334155;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-item .label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.detail-item .value {
+  font-weight: 600;
+}
+
+.badge {
+  background-color: #0369a1;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* Error message styling */
+.error-card {
+  display: none; /* Hidden by default */
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.error-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}

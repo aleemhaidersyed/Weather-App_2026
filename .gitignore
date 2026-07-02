@@ -1,0 +1,13 @@
+# Python virtual environment sandbox
+venv/
+__pycache__/
+*.pyc
+
+# Local database file
+backend/weather.db
+
+# Terraform state and plugin binaries
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
