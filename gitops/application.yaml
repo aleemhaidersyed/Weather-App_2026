@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: weather-app
+  namespace: argocd # Installs inside the ArgoCD system namespace
+spec:
+  project: default
+  source:
+    # 1. Tells ArgoCD what GitHub repository to watch
+    repoURL: https://github.com/aleemhaidersyed/Weather-App_2026.git
+    targetRevision: HEAD # Watches the latest commit on the default branch
+    path: helm/weather-app # The folder containing our Helm Chart
+  destination:
+    # 2. Tells ArgoCD where to deploy the app (local Kubernetes cluster)
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    # 3. Tells ArgoCD to automatically sync changes and delete old resources
+    automated:
+      prune: true # Deletes old cloud resources if we delete them from Git
+      selfHeal: true # Automatically overrides manual cluster changes

@@ -1,0 +1,24 @@
+# ==============================================================================
+# Centralized Variables for Weather Application
+# ==============================================================================
+
+replicaCount: 2 # Launch 2 running pods for high availability
+
+image:
+  repository: ghcr.io/aleemhaidersyed/weather-backend # Points to GitHub Container Registry
+  tag: "latest"
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer # Creates an AWS load balancer to route public traffic
+  port: 80 # The port users connect to on the web
+  targetPort: 5000 # The port our Flask app is listening on
+
+# System resource limits to prevent memory leaks from crashing other apps
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
