@@ -39,11 +39,22 @@ jobs:
         chmod +x test_api.sh
         ./test_api.sh
 
-    #6. Set up Docker Buildx (compiler plugin for Docker)
+    # 6. Set up Docker Buildx (compiler plugin for Docker)
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3  # ✅ Correct repository
+      uses: docker/setup-buildx-action@v3
 
     # 7. Compile our Docker container image locally on the runner
     - name: Build Docker Image
       run: |
         docker build -t weather-backend:${{ github.sha }} backend/
+
+    # 8. Run Trivy vulnerability scanner inside the runner VM
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@0.28.0 # Scans the built image inside the runner
+      with:
+        image-ref: 'weather-backend:${{ github.sha }}'
+        format: 'table'
+        exit-code: '1' # Fails the build (exits with 1) if vulnerabilities are found
+        ignore-unfixed: true # Ignore issues that do not have a patch yet
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH' # Only block for High and Critical security holes
