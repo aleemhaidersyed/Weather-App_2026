@@ -21,6 +21,14 @@ spec:
         ports:
         - containerPort: {{ .Values.service.targetPort }}
         
+        # 🌟 ADD THIS BLOCK: Inject the secret as an environment variable
+        env:
+        - name: WEATHER_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: weather-secrets
+              key: WEATHER_API_KEY
+
         # Self-Healing Check 1: Is the container alive?
         livenessProbe:
           tcpSocket:
