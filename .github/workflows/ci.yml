@@ -50,7 +50,7 @@ jobs:
 
     # 8. Run Trivy vulnerability scanner inside the runner VM
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@v0.28.0  # ✅ Corrected version tag
+      uses: aquasecurity/trivy-action@v0.36.0  # 🌟 Upgrade to the secure post-incident release
       with:
         image-ref: 'weather-backend:${{ github.sha }}'
         format: 'table'
